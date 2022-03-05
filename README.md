@@ -1,1 +1,1 @@
-Using Vanila JavaScript and make Momentum App
+Make momentum app with Using Vanila JavaScript
