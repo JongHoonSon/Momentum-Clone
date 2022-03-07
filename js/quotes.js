@@ -102,10 +102,10 @@ const quotes = [
 
 ];
 
-const quote = document.querySelector("#quote span:first-child")
-const author = document.querySelector("#quote span:last-child")
+const $quote = document.querySelector("#quote span:first-child")
+const $author = document.querySelector("#quote span:last-child")
 
 const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
 
-quote.innerText = randomQuote.quote;
-author.innerText = randomQuote.author;
+$quote.innerText = randomQuote.quote;
+$author.innerText = randomQuote.author;

@@ -1,11 +1,11 @@
-const toDoForm = document.querySelector("#todo-form");
-const toDoInput = document.querySelector("#todo-form input");
-const toDoList = document.querySelector("#todo-list");
+const $toDoForm = document.querySelector("#todo-form");
+const $toDoInput = document.querySelector("#todo-form input");
+const $toDoList = document.querySelector("#todo-list");
 
 const TODOS_KEY = "todos"
 let toDos = [];
 
-toDoForm.addEventListener("submit", handleToDoSubmit);
+$toDoForm.addEventListener("submit", handleToDoSubmit);
 checkToDos();
 
 function checkToDos() {
@@ -22,8 +22,8 @@ function checkToDos() {
 
 function handleToDoSubmit(event) {
     event.preventDefault();
-    const newToDoValue = toDoInput.value;
-    toDoInput.value = "";
+    const newToDoValue = $toDoInput.value;
+    $toDoInput.value = "";
 
     const newToDo = {
         id: Date.now(),
@@ -36,18 +36,18 @@ function handleToDoSubmit(event) {
 }
 
 function paintToDo(newToDo) {
-    const toDoItem = document.createElement("li");
-    const toDoItemContents = document.createElement("span");
-    const toDoItemDeleteBtn = document.createElement("button");
+    const $toDoItem = document.createElement("li");
+    const $toDoItemContents = document.createElement("span");
+    const $toDoItemDeleteBtn = document.createElement("button");
 
-    toDoItem.appendChild(toDoItemContents);
-    toDoItem.appendChild(toDoItemDeleteBtn);
-    toDoList.appendChild(toDoItem);
+    $toDoItem.appendChild($toDoItemContents);
+    $toDoItem.appendChild($toDoItemDeleteBtn);
+    $toDoList.appendChild($toDoItem);
 
-    toDoItem.id = newToDo.id;
-    toDoItemContents.innerText = newToDo.text;
-    toDoItemDeleteBtn.innerText = " X ";
-    toDoItemDeleteBtn.addEventListener("click", deleteToDoItem)
+    $toDoItem.id = newToDo.id;
+    $toDoItemContents.innerText = newToDo.text;
+    $toDoItemDeleteBtn.innerText = " X ";
+    $toDoItemDeleteBtn.addEventListener("click", deleteToDoItem)
 }
 
 function saveToDos() {
@@ -55,9 +55,9 @@ function saveToDos() {
 }
 
 function deleteToDoItem(event) {
-    const toDoItem = event.target.parentElement;
-    const toDoItemID = toDoItem.id;
+    const $toDoItem = event.target.parentElement;
+    const toDoItemID = $toDoItem.id;
     toDos = toDos.filter(el => el.id !== parseInt(toDoItemID));
     saveToDos();
-    toDoItem.remove();
+    $toDoItem.remove();
 }
