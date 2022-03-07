@@ -5,6 +5,18 @@ const greeting = document.querySelector("#greeting");
 const HIDDEN_CLASSNAME = "hidden";
 const USERNAME_KEY = "username";
 
+checkUserLogin();
+
+function checkUserLogin() {
+    const savedUsername = localStorage.getItem(USERNAME_KEY);
+
+    if(savedUsername === null) {
+        loginForm.classList.remove(HIDDEN_CLASSNAME);
+        loginForm.addEventListener("submit", onLoginSubmit);
+    } else {
+        paintGreetings(savedUsername);
+    }
+}
 
 function onLoginSubmit(event) {
     event.preventDefault();
@@ -17,13 +29,4 @@ function onLoginSubmit(event) {
 function paintGreetings(username) {
     greeting.innerHTML = `Hello ${username}`;
     greeting.classList.remove(HIDDEN_CLASSNAME);
-}
-
-const savedUsername = localStorage.getItem(USERNAME_KEY);
-
-if(savedUsername === null) {
-    loginForm.classList.remove(HIDDEN_CLASSNAME);
-    loginForm.addEventListener("submit", onLoginSubmit);
-} else {
-    paintGreetings(savedUsername);
 }
