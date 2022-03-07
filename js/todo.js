@@ -3,34 +3,21 @@ const toDoInput = document.querySelector("#todo-form input");
 const toDoList = document.querySelector("#todo-list");
 
 const TODOS_KEY = "todos"
-
 let toDos = [];
 
-function saveToDos() {
-    localStorage.setItem(TODOS_KEY, JSON.stringify(toDos));
-}
+toDoForm.addEventListener("submit", handleToDoSubmit);
+checkToDos();
 
-function deleteToDoItem(event) {
-    const toDoItem = event.target.parentElement;
-    const toDoItemID = toDoItem.id;
-    toDos = toDos.filter(el => el.id !== parseInt(toDoItemID));
-    saveToDos();
-    toDoItem.remove();
-}
+function checkToDos() {
+    const savedToDos = localStorage.getItem(TODOS_KEY);
 
-function paintToDo(newToDo) {
-    const toDoItem = document.createElement("li");
-    const toDoItemContents = document.createElement("span");
-    const toDoItemDeleteBtn = document.createElement("button");
-
-    toDoItem.appendChild(toDoItemContents);
-    toDoItem.appendChild(toDoItemDeleteBtn);
-    toDoList.appendChild(toDoItem);
-
-    toDoItem.id = newToDo.id;
-    toDoItemContents.innerText = newToDo.text;
-    toDoItemDeleteBtn.innerText = " X ";
-    toDoItemDeleteBtn.addEventListener("click", deleteToDoItem)
+    if(savedToDos !== null) {
+        const parsedToDos = JSON.parse(savedToDos);
+        parsedToDos.forEach(el => {
+            toDos.push(el);
+            paintToDo(el);
+        });
+    }
 }
 
 function handleToDoSubmit(event) {
@@ -48,14 +35,29 @@ function handleToDoSubmit(event) {
     saveToDos();
 }
 
-toDoForm.addEventListener("submit", handleToDoSubmit);
+function paintToDo(newToDo) {
+    const toDoItem = document.createElement("li");
+    const toDoItemContents = document.createElement("span");
+    const toDoItemDeleteBtn = document.createElement("button");
 
-const savedToDos = localStorage.getItem(TODOS_KEY);
+    toDoItem.appendChild(toDoItemContents);
+    toDoItem.appendChild(toDoItemDeleteBtn);
+    toDoList.appendChild(toDoItem);
 
-if(savedToDos !== null) {
-    const parsedToDos = JSON.parse(savedToDos);
-    parsedToDos.forEach(el => {
-        toDos.push(el);
-        paintToDo(el);
-    });
+    toDoItem.id = newToDo.id;
+    toDoItemContents.innerText = newToDo.text;
+    toDoItemDeleteBtn.innerText = " X ";
+    toDoItemDeleteBtn.addEventListener("click", deleteToDoItem)
+}
+
+function saveToDos() {
+    localStorage.setItem(TODOS_KEY, JSON.stringify(toDos));
+}
+
+function deleteToDoItem(event) {
+    const toDoItem = event.target.parentElement;
+    const toDoItemID = toDoItem.id;
+    toDos = toDos.filter(el => el.id !== parseInt(toDoItemID));
+    saveToDos();
+    toDoItem.remove();
 }
