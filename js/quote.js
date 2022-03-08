@@ -37,7 +37,7 @@ const quotes = [
     },
     {
         quote: "I want to talk about facts.",
-        author: "Rafa Benitez",
+        author: "Rafael Benitez",
     },
     {
         quote: "If you do not believe you can do it then you have no chance at all",
@@ -107,5 +107,5 @@ const $author = document.querySelector(".quote span:last-child")
 
 const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
 
-$quote.innerText = randomQuote.quote;
-$author.innerText = randomQuote.author;
+$quote.innerText = `"${randomQuote.quote}"`;
+$author.innerText = `- ${randomQuote.author} -`;
