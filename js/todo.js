@@ -37,16 +37,19 @@ function handleToDoSubmit(event) {
 
 function paintToDo(newToDo) {
     const $toDoItem = document.createElement("li");
-    const $toDoItemContents = document.createElement("span");
+    const $toDoItemSpan = document.createElement("span");
     const $toDoItemDeleteBtn = document.createElement("button");
+    const $toDoItemDeleteBtnImage = document.createElement("img");
 
-    $toDoItem.appendChild($toDoItemContents);
+    $toDoItemDeleteBtn.append($toDoItemDeleteBtnImage);
+    $toDoItem.appendChild($toDoItemSpan);
     $toDoItem.appendChild($toDoItemDeleteBtn);
     $toDoList.appendChild($toDoItem);
 
+    $toDoItem.classList.add("todo-item");
     $toDoItem.id = newToDo.id;
-    $toDoItemContents.innerText = newToDo.text;
-    $toDoItemDeleteBtn.innerText = " X ";
+    $toDoItemSpan.innerText = newToDo.text;
+    $toDoItemDeleteBtnImage.src = "svg/trash-can-solid.svg";
     $toDoItemDeleteBtn.addEventListener("click", deleteToDoItem)
 }
 
