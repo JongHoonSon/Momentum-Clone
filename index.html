@@ -15,12 +15,16 @@
         </div>
     </header>
     <main>
-        <form class="login-form hidden">
-            <input required maxlength="15" type="text" placeholder="What is your name?" />
-            <button>Log In</button>
-        </form>
-        <h2 class="clock">00:00:00</h2>
-        <h1 class="greeting" class="hidden"></h1>
+        <div class="clock-wrapper">
+            <h2 class="clock">00:00</h2>
+        </div>
+        <div class="login-wrapper">
+            <form class="login-form hidden">
+                <input required maxlength="15" type="text" placeholder="What is your name?" />
+                <button><i class="fa-solid fa-right-to-bracket"></i></button>
+            </form>
+            <h1 class="greeting" class="hidden"></h1>
+        </div>
         <div class="todo">
             <form class="todo-form">
                 <input type="text" placeholder="Write a To Do and Press Enter." required />
@@ -34,11 +38,12 @@
             <span></span>
         </div>
     </footer>
-    <script src="js/login.js"></script>
     <script src="js/clock.js"></script>
+    <script src="js/login.js"></script>
     <script src="js/quote.js"></script>
     <script src="js/background.js"></script>
     <script src="js/todo.js"></script>
     <script src="js/weather.js"></script>
+    <script src="https://kit.fontawesome.com/4bc00e0a4c.js" crossorigin="anonymous"></script>
 </body>
 </html>
