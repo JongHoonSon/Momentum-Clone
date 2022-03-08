@@ -25,8 +25,8 @@ function getWeatherData(weatherAPIUrl) {
 }
 
 function paintWeather(locationName, locationWeather, locationTemp) {
-    const $locationName = document.querySelector("#weather span:first-child");
-    const $locationWeather = document.querySelector("#weather span:last-child");
+    const $locationName = document.querySelector(".weather span:first-child");
+    const $locationWeather = document.querySelector(".weather span:last-child");
 
     $locationName.innerText = locationName;
     $locationWeather.innerText = `${locationWeather} / ${locationTemp}°C`;
